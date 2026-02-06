@@ -2,7 +2,7 @@
 *.class
 
 # Build folders
-out/
+ou  t/
 target/
 build/
 

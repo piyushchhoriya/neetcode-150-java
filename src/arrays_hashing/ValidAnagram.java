@@ -8,24 +8,41 @@
 // Output: true
 
 
-Bruteforce : We can take a single character from s and search in t and if found 
-we will remove them from both and keep iterating
-Time Complexity: O(n^2)
-Space Complexity : O(1)
+// Bruteforce : We can take a single character from s and search in t and if found 
+// we will remove them from both and keep iterating
+// Time Complexity: O(n^2)
+// Space Complexity : O(1)
 
-Optimal Solution: We can use an array as it is mentioned that s & t will have 
-lowercase characters i.e 26 only
-Time Complexity : O(n)
-Space Complexity : O(1) (array will be of fixed size so O(1))
+// Optimal Solution: We can use an array as it is mentioned that s & t will have 
+// lowercase characters i.e 26 only
+// Time Complexity : O(n)
+// Space Complexity : O(1) (array will be of fixed size so O(1))
+
+    class Solution {
+        public boolean isAnagram(String s, String t) {
+            if(s.length() != t.length()){
+                return false;
+            }
+            int[] charCount = new int[26];
+            for(int i=0;i<s.length();i++){
+                charCount[s.charAt(i)-'a']++;
+                charCount[t.charAt(i)-'a']--;
+            }
+            for(int i=0;i<charCount.length;i++){
+                if(charCount[i]!=0){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 
 
-
-
-Follow up: What if the inputs contain Unicode characters? How would you adapt 
-your solution to such a case?
-In this case we will use a hashmap based approach
-Time Complexity : O(n)
-Space Complexity : O(1)
+// Follow up: What if the inputs contain Unicode characters? How would you adapt 
+// your solution to such a case?
+// In this case we will use a hashmap based approach
+// Time Complexity : O(n)
+// Space Complexity : O(1)
 
     class Solution {
         public boolean isAnagram(String s, String t) {
